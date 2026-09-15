@@ -123,6 +123,25 @@ Due to iOS system limitations, once an iPhone/iPad is connected to a screen mirr
 
 This is a normal behavior restriction of iOS for external audio output devices, not a NanoKVM Go fault. If you need to control the volume, adjust it on the host device (iPhone/iPad) or within the app playing the content, or use an external audio device to adjust the volume.
 
+## Power Issues
+
+### NanoKVM Go keeps rebooting due to an underpowered power adapter or a charging cable that does not support PD fast charging
+
+NanoKVM Go is powered as follows:
+
+- If the **Auxiliary USB-C port (lightning icon, Power Port)** is not connected, NanoKVM Go is powered by the **target device's USB-C port**;
+- If the **Auxiliary USB-C port (lightning icon, Power Port)** is connected, the power adapter connected to it must supply power to **both the target device and NanoKVM Go** at the same time (this port supports USB-PD charging passthrough and keeps charging the target device).
+
+Therefore, when a user connects an **underpowered power adapter** (e.g. an old 5V/1A power adapter) or a **charging cable that does not support the USB-PD fast-charging protocol** to the auxiliary USB-C port, the input cannot satisfy the power needs of both the target device and NanoKVM Go, and NanoKVM Go may **keep rebooting** due to insufficient power.
+
+**Solution:**
+
+1. Use a **power adapter and cable that support the USB-PD fast-charging protocol** with sufficient output, and connect them to the auxiliary USB-C port (lightning icon), so that both the target device and NanoKVM Go can be powered.
+2. Do not use cables that only support regular slow charging or cables of unknown specification.
+3. If the auxiliary USB-C port is not connected, make sure the target device's USB-C port can supply stable power to NanoKVM Go.
+
+> Tip: Always use a certified PD fast-charging power adapter and cable with sufficient output to avoid repeated reboots or abnormal behavior caused by insufficient power.
+
 ## Feedback
 
 + If the above methods do not solve the problem, please tell us your purchased model and the issue you encountered on the forum, GitHub or the QQ group, and we will answer patiently.
